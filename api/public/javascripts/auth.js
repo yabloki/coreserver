@@ -30,7 +30,7 @@ async function verifySignature(error, signature) {
     }
     let token  = findGetParameter('token');
     let hmac  = findGetParameter('hmac');
-    await axios.post('/verify', {
+    await axios.post('/signup', {
                                     token,
                                     hmac,
                                     signature,
