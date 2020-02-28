@@ -1,7 +1,7 @@
 var express = require('express');
-const { getNonce, setNonce } = require('../lib/redis-client');
+const { setNonce } = require('../lib/redis-client');
 const { processSignUpData, verifyToken, verifySignature } = require('../lib/auth');
-// const getNonce = require('../lib/emoji-generator.js');
+const generateNonce = require('../lib/emoji-generator.js');
 var cors = require('cors')
 var router = express.Router();
 
@@ -16,7 +16,7 @@ router.get('/auth', function(req, res, next) {
                     });
 
 router.get('/nonce', async function(req, res, next) {
-                      let nonce = getNonce()
+                      let nonce = generateNonce()
                       await setNonce(req.body.address, nonce)
                       res.json({ nonce })
                     }); 
@@ -30,7 +30,7 @@ router.post('/signup', cors(), async function(req, res, next) {
                           let {payload, payloadSign} = processSignUpData(req.body.token, req.body.hmac, req.body.signature, req.body.address)
                           payload = Buffer.from(JSON.stringify(payload), 'utf8').toString('hex');
                           let url = 'http://localhost:8080/api/oauth/sso/callback?payload=' + payload + "&hmac=" + payloadSign
-                          res.redirect('http://localhost:8080/api/oauth/sso/callback?payload=' + payload + "&hmac=" + payloadSign)
+                          res.redirect(url)
                         } catch (error) {
                            console.log(error)
                         }

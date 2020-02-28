@@ -1,4 +1,6 @@
 const crypto = require('crypto');
+const { getNonce } = require('../lib/redis-client');
+
 const secret = Buffer.from("537d8e3b7cd2361091cfcfc7171967b6db6a955b93c104d097c5ff7366bb178e", 'hex');
 
 function processSignUpData(token, hmac, signature, address) {
