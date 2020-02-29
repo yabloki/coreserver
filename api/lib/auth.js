@@ -9,18 +9,10 @@ const {
 const secret = Buffer.from("537d8e3b7cd2361091cfcfc7171967b6db6a955b93c104d097c5ff7366bb178e", 'hex');
 
 function processSignUpData(token, hmac, signature, address) {
-
-    // const expectedHash = crypto.createHmac('sha256', secret)
-    //                .update('I love cupcakes')
-    //                .digest('hex');
-    // if (hmac != expectedHash) {
-    //     return 'error'
-    // }
-
     const payload = {
         token,
-        "email": address + '@eth.eth',
-        "name": 'yabloki',
+        "email": address,
+        "name": 'AuthorizedAnonymous',
     }
 
     const payloadSign = crypto.createHmac('sha256', secret)
