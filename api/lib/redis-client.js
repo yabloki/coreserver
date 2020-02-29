@@ -1,7 +1,9 @@
 var constants = require('./constants');
 const redis = require('redis');
 const {promisify} = require('util');
-const client = redis.createClient(constants.REDIS_URL);
+const client = redis.createClient({
+  host: constants.REDIS_URL 
+});
 
 const getAsync  = promisify(client.get).bind(client);
 const setAsync  = promisify(client.set).bind(client);
