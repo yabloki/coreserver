@@ -7,6 +7,7 @@ const {
   verifyToken,
   verifySignature
 } = require('../lib/auth');
+
 const generateNonce = require('../lib/nonce-generator.js');
 var cors = require('cors')
 
@@ -42,15 +43,6 @@ router.post('/signup', cors(), async function (req, res, next) {
   } catch (error) {
     console.log(error)
   }
-});
-
-router.get('/signin', function (req, res, next) {
-  if (!verifyToken(req.body.token, req.body.hmac)) {// ||
-    // !verifySignature(req.body.signature, req.body.address)) {
-    res.send('verification error');
-  }
-  payload, hmac = processSignUpData(req.body.token, req.body.hmac, req.body.signature, req.body.address)
-  res.redirect()
 });
 
 module.exports = router;
