@@ -36,7 +36,7 @@ router.post('/signup', cors(), async function (req, res, next) {
     let {
       payload,
       payloadSign
-    } = processSignUpData(req.body.token, req.body.hmac, req.body.signature, req.body.address)
+    } = await processSignUpData(req.body.token, req.body.hmac, req.body.signature, req.body.address)
     payload = Buffer.from(JSON.stringify(payload), 'utf8').toString('hex');
     let url = 'http://localhost:8080/api/oauth/sso/callback?payload=' + payload + "&hmac=" + payloadSign
     res.redirect(url)
