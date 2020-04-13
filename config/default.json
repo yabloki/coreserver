@@ -1,0 +1,4 @@
+{
+    "wsUrl": "ws://ganache:8545",
+    "networkId": "28"
+}

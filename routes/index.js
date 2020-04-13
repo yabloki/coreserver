@@ -1,14 +1,13 @@
 var express = require('express');
-const {
-  setNonce
-} = require('../lib/redis-client');
+const { setNonce } = require('@lib/redis-client');
+const { getVaultData } = require('@lib/ethEvents');
 const {
   processSignUpData,
   verifyToken,
   verifySignature
-} = require('../lib/auth');
+} = require('@lib/auth');
 
-const generateNonce = require('../lib/nonce-generator.js');
+const generateNonce = require('@lib/nonce-generator.js');
 var cors = require('cors')
 
 var router = express.Router();
@@ -24,6 +23,10 @@ router.post('/nonce', async function (req, res, next) {
   res.json({
     nonce
   })
+});
+
+router.get('/vault', async function (req, res, next) {
+  res.json(getVaultData())
 });
 
 router.post('/signup', cors(), async function (req, res, next) {

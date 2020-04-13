@@ -1,10 +1,11 @@
+require('module-alias/register')
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var ethEvents = require('lib/ethEvents');
-var indexRouter = require('routes/index');
+var { initVaultEventsListener } = require('@lib/ethEvents');
+var indexRouter = require('@routes/index');
 
 var app = express();
 
@@ -36,5 +37,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-ethEvents();
+initVaultEventsListener();
 module.exports = app;
