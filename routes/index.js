@@ -33,6 +33,7 @@ router.post('/signup', cors(), async function (req, res, next) {
   if (!verifyToken(req.body.token, req.body.hmac) ||
       !await verifySignature(req.body.signature, req.body.address)) {
         res.send('verification error');
+        console.log("SIGNUP verification error")
         return;
   }
   try {
