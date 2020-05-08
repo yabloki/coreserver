@@ -1,4 +1,6 @@
 {
+    "passphrase": "produce end reduce movie attend scan tone tag someone hour scout spoil",
     "wsUrl": "ws://ganache:8545",
+    "httpNetworkUrl": "http://ganache:8545",
     "networkId": "28"
 }
