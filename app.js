@@ -4,7 +4,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var { initVaultEventsListener } = require('@lib/ethEvents');
 var indexRouter = require('@routes/index');
 
 var app = express();
@@ -37,5 +36,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-initVaultEventsListener();
 module.exports = app;

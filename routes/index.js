@@ -1,6 +1,6 @@
 var express = require('express');
 const { setNonce } = require('@lib/redis-client');
-const { getVaultData } = require('@lib/ethEvents');
+const { getVaultData } = require('@lib/ethInfra');
 const {
   processSignUpData,
   verifyToken,
@@ -26,7 +26,7 @@ router.post('/nonce', async function (req, res, next) {
 });
 
 router.get('/vault', async function (req, res, next) {
-  res.json(getVaultData())
+  res.json(await getVaultData())
 });
 
 router.post('/signup', cors(), async function (req, res, next) {
