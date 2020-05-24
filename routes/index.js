@@ -1,6 +1,7 @@
 var express = require('express');
 const { setNonce } = require('@lib/redis-client');
 const { getVaultData } = require('@lib/ethInfra');
+const { sendGhostInvite } = require('@lib/ghostAdminApi');
 const {
   processSignUpData,
   verifyToken,
@@ -22,6 +23,13 @@ router.post('/nonce', async function (req, res, next) {
   await setNonce(req.body.address, nonce)
   res.json({
     nonce
+  })
+});
+
+router.post('/invite', async function (req, res, next) {
+  let success = await sendGhostInvite(req.body.email);
+  res.json({
+    success
   })
 });
 
