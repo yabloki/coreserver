@@ -27,10 +27,16 @@ router.post('/nonce', async function (req, res, next) {
 });
 
 router.post('/invite', async function (req, res, next) {
-  let success = await sendGhostInvite(req.body.email);
-  res.json({
-    success
-  })
+  try {
+    let success = await sendGhostInvite(req.body.email, req.body.eth);
+    res.json({
+      success
+    })
+  } catch (e) {
+    res.status(500).json({
+      error:e.context
+    })
+  }
 });
 
 router.get('/vault', async function (req, res, next) {
