@@ -1,7 +1,10 @@
 var express = require('express');
 const { setNonce } = require('@lib/redis-client');
 const { getVaultData } = require('@lib/ethInfra');
-const { sendGhostInvite } = require('@lib/ghostAdminApi');
+const { sendGhostInvite,
+        getPostPrice,
+        getRootAddress } = require('@lib/ghostAdminApi');
+
 const {
   processSignUpData,
   verifyToken,
@@ -39,8 +42,25 @@ router.post('/invite', async function (req, res, next) {
   }
 });
 
-router.get('/vault', async function (req, res, next) {
-  res.json(await getVaultData())
+
+router.get('/authoraddress', async function (req, res, next) {
+  try {
+    let adress = await getRootAddress(req.body.postId);
+    res.json({
+      adress
+    })
+  } catch (e) {
+    res.status(500).json({
+      error:e.context
+    })
+  }
+});
+
+router.post('/post', async function (req, res, next) {
+  let price = await getPostPrice(req.body.postId);
+  let data  = await getVaultData();
+  data.price = price
+  res.json(data)
 });
 
 router.post('/signup', cors(), async function (req, res, next) {
