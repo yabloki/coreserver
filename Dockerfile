@@ -1,7 +1,7 @@
 FROM node:12
 # TODO keccak compilation fail
 WORKDIR /usr/src/app
-COPY coreserver/package*.json ./
+COPY package*.json ./
 RUN npm ci
 COPY coreserver .
 RUN curl https://storage.googleapis.com/ethereumc/CNTToken.json > CNTToken.json
