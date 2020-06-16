@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+
+  coreserver:
+    image: coreserver:latest
+    ports:
+      - 3000:3000
+    expose:
+        - '3000'
+    command:
+      - node
+      - "bin/www"
