@@ -17,6 +17,10 @@ var cors = require('cors')
 var router = express.Router();
 
 
+router.get('/health', function (req, res, next) {
+  res.send('OK');
+});
+
 router.get('/auth', function (req, res, next) {
   res.render('auth');
 });
