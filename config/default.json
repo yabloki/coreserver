@@ -1,5 +1,5 @@
 {
-    "redisUrl": "10.147.193.131",
+    "redisUrl": "10.151.190.195",
     "wsUrl": "ws://ganache:8545",
     "httpNetworkUrl": "http://ganache:8545",
     "networkId": "28",
