@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 COPY coreserver/package*.json ./
 RUN npm ci
 COPY coreserver .
-COPY ethereumContracts/build/contracts/CNTVault.json  .
-COPY ethereumContracts/build/contracts/CNTToken.json  .
+RUN curl https://storage.googleapis.com/ethereumc/CNTToken.json > CNTToken.json
+RUN curl https://storage.googleapis.com/ethereumc/CNTVault.json > CNTVault.json
 EXPOSE 3000
 CMD [ "node", "bin/www" ]
