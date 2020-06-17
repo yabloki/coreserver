@@ -19,7 +19,9 @@ async function auth(){
 }
 
 async function signNonce(w3) {
-    let nonce = (await axios.get('/nonce')).data.nonce
+    let nonce = (await axios.post('/nonce', {
+                                            address: web3.eth.coinbase
+                                           })).data.nonce
     w3.personal.sign(web3.fromUtf8(nonce), web3.eth.coinbase, verifySignature);
 }
 
@@ -36,7 +38,7 @@ async function verifySignature(error, signature) {
                                     signature,
                                     address: web3.eth.coinbase
                                 })
-    // we are here in error case, success makes redirect.
+    window.close ()
 }
 
 function findGetParameter(parameterName) {

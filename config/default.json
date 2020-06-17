@@ -1,0 +1,18 @@
+{
+    "redisUrl": "10.151.190.195",
+    "wsUrl": "ws://ganache:8545",
+    "httpNetworkUrl": "http://ganache:8545",
+    "networkId": "28",
+    
+    "pgHost": "db",
+    "pgDatabase": "commento",
+    
+    "gaaUrl": "http://ghost:2368",
+    "gaaVersion": "v3",
+
+    "pgUser": "postgres",
+    "pgPassword": "postgres",
+    "commentoSecret": "2d84d79c27047799d82d313c9fe1b32afe735c07331e30ebd032c2b955558933",
+    "passphrase": "produce end reduce movie attend scan tone tag someone hour scout spoil",
+    "gaaKey": "5eb8a1a8fa5eab0001ab587b:a8fe1982a196c9c95ea8c296ff10a4cb0b456b864cd8e2d610faccdc0be554c8"
+}
