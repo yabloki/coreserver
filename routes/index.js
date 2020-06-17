@@ -18,7 +18,7 @@ var router = express.Router();
 
 
 router.get('/health', function (req, res, next) {
-  res.send('OK');
+  res.send('OK!!');
 });
 
 router.get('/auth', function (req, res, next) {
