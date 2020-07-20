@@ -1,13 +1,13 @@
 {
-    "redisUrl": "10.151.190.195",
+    "redisUrl": "10.32.52.91",
     "wsUrl": "ws://ganache:8545",
     "httpNetworkUrl": "http://ganache:8545",
     "networkId": "28",
     
-    "pgHost": "db",
+    "pgHost": "10.78.65.3",
     "pgDatabase": "commento",
     
-    "gaaUrl": "http://ghost:2368",
+    "gaaUrl": "http://2cents.media",
     "gaaVersion": "v3",
 
     "pgUser": "postgres",
