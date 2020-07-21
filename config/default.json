@@ -1,8 +1,8 @@
 {
     "redisUrl": "10.32.52.91",
-    "wsUrl": "ws://ganache:8545",
-    "httpNetworkUrl": "http://ganache:8545",
-    "networkId": "28",
+    "wsUrl": "wss://kovan.infura.io/ws/v3/360f0b2a72cc463ca9aacd75b9f5fbf4",
+    "httpNetworkUrl": "https://kovan.infura.io/v3/360f0b2a72cc463ca9aacd75b9f5fbf4",
+    "networkId": "42",
     
     "pgHost": "10.78.65.3",
     "pgDatabase": "commento",
