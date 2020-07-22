@@ -26,7 +26,8 @@
     "pg": "^7.18.2",
     "pug": "^2.0.4",
     "redis": "^2.8.0",
-    "web3": "^1.2.6"
+    "web3": "^1.2.6",
+    "web3-providers-ws": "^1.2.11"
   },
   "_moduleAliases": {
     "@lib": "lib",
