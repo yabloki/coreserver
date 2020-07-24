@@ -3,6 +3,9 @@ services:
 
   eventProcessor:
     image: coreserver:latest
+    restart: always
+    logging:
+      driver: gcplogs
     command:
       - node
       - "lib/ethEventProcessor.js"
@@ -14,6 +17,9 @@ services:
   
   ofelia:
     image: mcuadros/ofelia:latest
+    restart: always
+    logging:
+      driver: gcplogs
     command: daemon --docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
