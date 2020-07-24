@@ -3,11 +3,6 @@ services:
 
   eventProcessor:
     image: coreserver:latest
-    depends_on:
-      - db
-    environment:
-      PGUSER: postgres
-      PGPASSWORD: postgres
     command:
       - node
       - "lib/ethEventProcessor.js"
