@@ -1,13 +1,24 @@
 version: '3.3'
 services:
 
-  coreserver:
+  eventProcessor:
     image: coreserver:latest
-    restart: always
-    logging:
-      driver: gcplogs
-    ports:
-      - 80:3000
+    depends_on:
+      - db
+    environment:
+      PGUSER: postgres
+      PGPASSWORD: postgres
     command:
       - node
-      - "bin/www"
+      - "lib/ethEventProcessor.js"
+    labels:
+      ofelia.enabled: "true"
+      ofelia.job-exec.rebalancer.no-overlap: "true"
+      ofelia.job-exec.rebalancer.schedule: "@every 10s"
+      ofelia.job-exec.rebalancer.command: "node lib/rebalancer.js"
+  
+  ofelia:
+    image: mcuadros/ofelia:latest
+    command: daemon --docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
