@@ -79,7 +79,7 @@ router.post('/signup', async function (req, res, next) {
       payloadSign
     } = await processSignUpData(req.body.token, req.body.hmac, req.body.signature, req.body.address)
     payload = Buffer.from(JSON.stringify(payload), 'utf8').toString('hex');
-    let url = 'http://commento.2cents.media/api/oauth/sso/callback?payload=' + payload + "&hmac=" + payloadSign
+    let url = 'https://commento.2cents.media/api/oauth/sso/callback?payload=' + payload + "&hmac=" + payloadSign
     res.redirect(url)
   } catch (error) {
     console.log(error)
