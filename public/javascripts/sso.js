@@ -20,9 +20,9 @@ async function auth(){
 
 async function signNonce(w3) {
     let nonce = (await axios.post('/nonce', {
-                                            address: web3.eth.coinbase
+                                            address: web3.currentProvider.selectedAddress
                                            })).data.nonce
-    w3.personal.sign(web3.fromUtf8(nonce), web3.eth.coinbase, verifySignature);
+    w3.personal.sign(web3.fromUtf8(nonce), web3.currentProvider.selectedAddress, verifySignature);
 }
 
 async function verifySignature(error, signature) {
