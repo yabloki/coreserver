@@ -36,7 +36,7 @@ async function verifySignature(error, signature) {
                                     token,
                                     hmac,
                                     signature,
-                                    address: web3.eth.coinbase
+                                    address: web3.currentProvider.selectedAddress
                                 })
     window.close ()
 }
